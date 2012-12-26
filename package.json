@@ -21,5 +21,9 @@
   ],
   "author": "Jaakko-Heikki Heusala <jheusala@iki.fi>",
   "license": "MIT",
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "lint": "*",
+    "vows": "*"
+  }
 }
