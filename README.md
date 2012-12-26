@@ -24,13 +24,14 @@ Examples
 
 ### URL
 
-You can create URL instances by calling `URL.create(path)` or `new 
-URL(path)`. However `URL.create()` is smarter and will only create new 
-objects when it must. For example when called with another URL object 
-it will return it directly since URL objects are immutable and cannot 
-be changed.
+You can create instances of `URL` by calling `URL.create(path)` or 
+`new URL(path)`.
 
-Each URL method returns an URL object, so you can chain its 
+However `URL.create()` will only create new objects when it must. For 
+example when called with another `URL` instance it will return it 
+directly since all `URL` objects are immutable and cannot be changed.
+
+Each method of `URL` returns an another URL object so you can chain its 
 methods:
 
 ```javascript
@@ -44,7 +45,8 @@ console.log(url.href);
 
 The `Path` works the same way. 
 
-You can create objects by calling `Path.create('/foo/bar')`.
+You can create objects by calling `Path.create('/foo/bar')` or 
+`new Path('/foo/bar')`. Paths are immutable, too. 
 
 ```javascript
 var path = Path.create('/foo').join('bar/docroot').join('index.html');
