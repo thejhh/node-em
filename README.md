@@ -27,7 +27,9 @@ The code `javascriptURL.parse('http://www.jhh.me/').hostname` will result as `ww
 Every URL method returns an URL object, so you can chain its methods:
 
 ```javascript
-var url = URL.create('http://www.jhh.me/').resolve('/2012/12/24/setting-up-http-server-on-windows-with-node-js/').parse();
+var url = URL.create('http://www.jhh.me/')
+    .resolve('/2012/12/24/setting-up-http-server-on-windows-with-node-js/')
+    .parse();
 console.log(url.href);
 ```
 
