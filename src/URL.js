@@ -30,6 +30,18 @@ function URL(value, opts, flags) {
 				self[key] = opts[key];
 			}
 		});
+	} else {
+		(function() {
+			var cache;
+			['href', 'protocol', 'host', 'auth', 'hostname', 
+			 'port', 'slashes', 'pathname', 'search', 'path', 'query', 
+			 'hash'].forEach(function(key) {
+				self.__defineGetter__(key, function(){
+					if(cache === undefined) { cache = self.parse(); }
+					return cache[key];
+				});
+			}); // forEach
+		}());
 	}
 	Object.freeze(self);
 }

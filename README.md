@@ -36,10 +36,14 @@ methods:
 
 ```javascript
 var url = URL.create('http://www.jhh.me/')
-    .resolve('/2012/12/24/setting-up-http-server-on-windows-with-node-js/')
-    .parse();
+    .resolve('/2012/12/24/setting-up-http-server-on-windows-with-node-js/');
 console.log(url.href);
 ```
+
+One of the coolest features of `URL` is that parsing can be done just 
+in time on demand. In the previous example the URL wasn't parsed until 
+you requested `url.href`! However if you need you can call 
+`url.parse()` and get a real object with no magic members and JIT.
 
 ### Path
 
