@@ -47,6 +47,9 @@ function AsyncObject(data) {
 				} catch(err) {
 					defer.reject(err);
 				}
+				// FIXME: Since it's a setter this promise doesn't 
+				// actually go anywhere. We need another way to pass 
+				// it back to the user.
 				return defer.promise;
 			});
 			
