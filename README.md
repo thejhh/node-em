@@ -28,7 +28,7 @@ You can create instances of `URL` by calling `URL.create(path)` or
 `new URL(path)`.
 
 However `URL.create()` only creates new objects when it must. For 
-example when called with an another instance of `URL` it will only 
+example when called with an another instance of `URL` it can simply 
 return it since it's immutable and cannot be changed.
 
 Each method of `URL` returns an another URL object so you can chain its 
