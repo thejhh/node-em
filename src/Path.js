@@ -16,6 +16,7 @@ function Path(value) {
 			throw new TypeError('value in `Path(value)` must be a string, not ' + (typeof value) + '!');
 		}
 	} else {
+		// FIXME: One thing to consider might be if normalize should be called only on demand like URL parsing is done...
 		self.value = node_path.normalize(value).replace(/\/+$/, '');
 		if(self.value === '') { self.value = '/'; }
 	}
