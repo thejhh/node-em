@@ -22,9 +22,16 @@ Open source, MIT-style license.
 Examples
 --------
 
-The code `javascriptURL.parse('http://www.jhh.me/').hostname` will result as `www.jhh.me`.
+### URL
 
-Every URL method returns an URL object, so you can chain its methods:
+You can create URL instances by calling `URL.create(path)` or `new 
+URL(path)`. However `URL.create()` is smarter and will only create new 
+objects when it must. For example when called with another URL object 
+it will return it directly since URL objects are immutable and cannot 
+be changed.
+
+Each URL method returns an URL object, so you can chain its 
+methods:
 
 ```javascript
 var url = URL.create('http://www.jhh.me/')
@@ -32,6 +39,19 @@ var url = URL.create('http://www.jhh.me/')
     .parse();
 console.log(url.href);
 ```
+
+### Path
+
+The `Path` works the same way. 
+
+You can create objects by calling `Path.create('/foo/bar')`.
+
+```javascript
+var path = Path.create('/foo').join('bar/docroot').join('index.html');
+console.log(path.basename('.html')); // Returns 'index'
+```
+
+### Further examples
 
 At the moment for further details please take a look at [tests](https://github.com/jheusala/node-em/tree/master/tests/vows).
 
@@ -72,7 +92,7 @@ Reference
 
 ### `Path.prototype.dirname()`
 
-### `Path.prototype.basename()`
+### `Path.prototype.basename(ext)`
 
 ### `Path.prototype.extname()`
 
