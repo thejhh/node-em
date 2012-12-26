@@ -1,0 +1,15 @@
+{
+  "name": "async-object",
+  "version": "0.0.1",
+  "description": "Asyncronous objects for Node.js (Concept testing)",
+  "main": "AsyncObject.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Jaakko-Heikki Heusala <jheusala@iki.fi>",
+  "license": "MIT",
+  "dependencies": {
+    "q": "*"
+  }
+}
