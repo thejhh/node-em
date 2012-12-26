@@ -50,8 +50,8 @@ You can create objects by calling `Path.create('/foo/bar')` or
 
 ```javascript
 var path = Path.create('/foo').join('bar/docroot/').join('index.html');
-console.log(path.dirname());         // Returns '/foo/bar/docroot'
-console.log(path.basename('.html')); // Returns 'index'
+console.log('dirname: '+path.dirname());         // Returns '/foo/bar/docroot'
+console.log('pathname: '+path.basename('.html')); // Returns 'index'
 ```
 
 ### Further examples
