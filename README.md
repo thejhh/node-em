@@ -4,6 +4,9 @@ node-em
 The `em` extends few core [NodeJS](http://nodejs.org/) modules with 
 simpler object oriented interface and immutable objects.
 
+* `em.URL` extends Node's core [url module](http://nodejs.org/api/url.html)
+* `em.Path` extends Node's core [path module](http://nodejs.org/api/path.html)
+
 Installation
 ------------
 
@@ -19,16 +22,16 @@ Open source, MIT-style license.
 Examples
 --------
 
-The code `em.URL.parse('http://www.jhh.me/foo/bar').hostname` will result as `www.jhh.me`.
+The code `javascriptURL.parse('http://www.jhh.me/').hostname` will result as `www.jhh.me`.
+
+Every URL method returns an URL object, so you can chain its methods:
+
+```javascript
+var url = URL.create('http://www.jhh.me/').resolve('/2012/12/24/setting-up-http-server-on-windows-with-node-js/').parse();
+console.log(url.href);
+```
 
 At the moment for further details please take a look at [tests](https://github.com/jheusala/node-em/tree/master/tests/vows).
-
-URL
----
-
-`em.URL(url)` is a smart object constructor using Node's core [url 
-module](http://nodejs.org/api/url.html). Created `URL` objects are 
-immutable -- instances cannot be changed after their creation.
 
 Reference
 ---------
