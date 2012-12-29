@@ -1,4 +1,5 @@
 /* AsyncObject Concept Testing */
+"use strict";
 
 var Q = require('q');
 
@@ -15,8 +16,14 @@ function AsyncObject(data) {
 		
 		Object.keys(data).forEach(function(key) {
 			
+			var set_promises = [];
+			
 			// Setting getters
 			self.__defineGetter__(key, function(){
+				console.log('DEBUG: self.__defineGetter__(' + key + ')');
+				if(set_promises.length !== 0) {
+					return set_promises.shift();
+				}
 				var defer = Q.defer();
 				try {
 					process.nextTick(function() {
@@ -34,12 +41,14 @@ function AsyncObject(data) {
 			
 			// Setting setters
 			self.__defineSetter__(key, function(value){
+				console.log('DEBUG: self.__defineSetter__(' + key + ', function('+value+'))');
 				var defer = Q.defer();
 				try {
 					process.nextTick(function() {
 						try {
-							cache[key] = value;
-							defer.resolve(value);
+							throw new Error("Test");
+							//cache[key] = value;
+							//defer.resolve(value);
 						} catch(err) {
 							defer.reject(err);
 						}
@@ -47,14 +56,14 @@ function AsyncObject(data) {
 				} catch(err) {
 					defer.reject(err);
 				}
-				// FIXME: Since it's a setter this promise doesn't 
+				// FIXME: Since it's a setter returned value doesn't 
 				// actually go anywhere. We need another way to pass 
 				// it back to the user.
-				return defer.promise;
+				//return defer.promise;
+				set_promises.push(defer.promise); // This works only after next time user uses the getter. Not good.
 			});
 			
 		});
-
 
 	}());
 	Object.freeze(self);
