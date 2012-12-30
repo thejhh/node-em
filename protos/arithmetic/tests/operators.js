@@ -25,7 +25,7 @@ function handle_promise(fn) {
 }
 
 /* */
-function test(result) {
+function test_by_eval(result) {
 	var ret = {
 		topic: handle_promise(function() {
 			var code = this.context.name;
@@ -39,26 +39,26 @@ function test(result) {
 
 /* */
 vows.describe('Testing operators').addBatch({
-	'plus(10)': test(10),
-	'plus(10, 20)': test(30),
-	'plus(10, 20, 30)': test(60),
-	'minus(30)': test(30),
-	'minus(30, 20)': test(10),
-	'minus(30, 20, 10)': test(0),
-	'asterisk(30)': test(30),
-	'asterisk(30, 20)': test(30*20),
-	'asterisk(30, 20, 10)': test(30*20*10),
-	'modulo(30)': test(30),
-	'modulo(30, 20)': test(30%20),
-	'modulo(30, 20, 10)': test(30%20%10),
-	'solidus(30)': test(30),
-	'solidus(30, 20)': test(30/20),
-	'solidus(30, 20, 10)': test(30/20/10),
-	'equality(30, 30)': test(true),
-	'equality(30, 30, 30)': test(true),
-	'equality(30, 20)': test(false),
-	'equality(30, 20, 30)': test(false),
-	'plus(asterisk(minus(plus(10, 20), 10), 2), asterisk(5,solidus(30, 20)))': test( ((10+20)-10)*2 + 5*(30/20) ),
+	'plus(10)': test_by_eval(10),
+	'plus(10, 20)': test_by_eval(30),
+	'plus(10, 20, 30)': test_by_eval(60),
+	'minus(30)': test_by_eval(30),
+	'minus(30, 20)': test_by_eval(10),
+	'minus(30, 20, 10)': test_by_eval(0),
+	'asterisk(30)': test_by_eval(30),
+	'asterisk(30, 20)': test_by_eval(30*20),
+	'asterisk(30, 20, 10)': test_by_eval(30*20*10),
+	'modulo(30)': test_by_eval(30),
+	'modulo(30, 20)': test_by_eval(30%20),
+	'modulo(30, 20, 10)': test_by_eval(30%20%10),
+	'solidus(30)': test_by_eval(30),
+	'solidus(30, 20)': test_by_eval(30/20),
+	'solidus(30, 20, 10)': test_by_eval(30/20/10),
+	'equality(30, 30)': test_by_eval(true),
+	'equality(30, 30, 30)': test_by_eval(true),
+	'equality(30, 20)': test_by_eval(false),
+	'equality(30, 20, 30)': test_by_eval(false),
+	'plus(asterisk(minus(plus(10, 20), 10), 2), asterisk(5,solidus(30, 20)))': test_by_eval( ((10+20)-10)*2 + 5*(30/20) ),
 }).export(module);
 
 /* EOF */
