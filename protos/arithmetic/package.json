@@ -14,5 +14,9 @@
   "license": "MIT",
   "dependencies": {
     "q": "*"
+  },
+  "devDependencies": {
+    "q": "*",
+    "benchmark": "*"
   }
 }
